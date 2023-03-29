@@ -22,11 +22,21 @@ namespace modul6_1302213034
         public int gettotalvideoplaycount()
         {
             int jum = 0;
-            for (int i = 0; i < uploadedvideos.Count; i++)
+            try
             {
-                jum += uploadedvideos[i].getplaycount();
+                for (int i = 0; i < uploadedvideos.Count; i++)
+                {
+                    checked
+                    {
+                        jum += uploadedvideos[i].playcount;
+                    }
+                }
+                return jum;
             }
-
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
             return jum;
         }
         public void addvideo(sayatubevideo video)

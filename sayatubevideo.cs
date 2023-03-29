@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.Contracts;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,18 +11,44 @@ namespace modul6_1302213034
     {
         private int id;
         private string title;
-        private int playcount;
+        public int playcount;
 
         public sayatubevideo( string title)
         {
-            this.id = new Random().Next(10000, 99999);
-            this.title = title;
-            this.playcount = 0;
+            Contract.Requires(title.Length <= 200);
+            Contract.Requires(title != null);
+
+            try
+            {
+                checked
+                {
+                    this.title = title;
+                    this.playcount = 0;
+                    this.id = new Random().Next(10000, 99999);
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
         }
 
         public void increaseplaycount(int playcount)
         {
-            this.playcount = checked(this.playcount + playcount);
+            Contract.Requires(playcount <= 2500000);
+            Contract.Requires(playcount > 0);
+
+            try
+            {
+                checked
+                {
+                    this.playcount = playcount;
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
         }
 
         public void printvideodetails() {

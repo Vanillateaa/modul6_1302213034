@@ -65,6 +65,22 @@ namespace modul6_1302213034
             user.addvideo(video10);
 
             user.printallvideocount();
+            Console.WriteLine("Video ditonton 25.000.000");
+            video1.increaseplaycount(25000000);
+            Console.WriteLine("Video ditonton 25.000.000 bisa jika 25.000.001 tidak bisa");
+            Console.WriteLine();
+
+            Console.WriteLine("Video ditonton limit int");
+            for (int i = 0; i < 84; i++)
+            {
+                video1.increaseplaycount(25000000);
+            }
+            video1.printvideodetails();
+            Console.WriteLine();
+            video1.increaseplaycount(25000000);
+            Console.WriteLine();
+
+            user.printallvideocount();
 
         }
      }
